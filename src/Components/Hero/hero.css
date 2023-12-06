@@ -1,0 +1,57 @@
+.hero-slides h2 {
+    font-size: 50px;
+    padding: 1.5rem 0 1rem 0;
+
+}
+
+.hero-slides h6 {
+    color: #de961a;
+    text-transform: uppercase;
+
+}
+
+.hero-slides .swiper {
+    /* height: 75vh; */
+    position: relative;
+}
+
+.hero-slides .swiper-slide {
+    /* height: 75vh; */
+    padding: 10rem 0;
+    text-align: center;
+
+}
+
+.hero-slides .swiper-button-next,
+.hero-slides .swiper-button-prev {
+    color: #fff;
+    padding: 0 3rem;
+}
+
+.hero-slides .swiper-button-next::after,
+.hero-slides .swiper-button-prev::after {
+    font-size: 30px;
+}
+
+.hero-slides .slides-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 80%;
+    color: #fff;
+    margin: auto;
+}
+
+.hero-slides .slides-content a {
+    max-width: 20%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 22%;
+    left: 45%
+}
+
+.slides-content p {
+    padding: 1.2rem;
+    color: #fff;
+}

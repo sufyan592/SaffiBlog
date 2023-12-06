@@ -1,0 +1,36 @@
+{
+  "blog": [
+    {
+      "id": "1",
+      "title": "body",
+      "shortparagraph": "Lorem ipsum dolor sit amet consectetur",
+      "paragraph": "datatat",
+      "author": "ramzan"
+    },
+    {
+      "id": "2",
+      "title": "Future of AI!",
+      "shortparagraph": "Lorem ipsum dolor sit amet consectetur",
+      "paragraph": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil assumenda nisi possimus corporis cum veritatis dolor doloribus. Asperiores blanditiis est officiis a possimus minima eaque voluptas illo adipisci. Magni aperiam quibusdam vitae, laboriosam corrupti ipsum? Placeat obcaecati rerum quasi minima consequuntur deleniti ipsam, at dolorem? Illo, impedit! A optio, at maiores architecto quam, esse in vitae amet facere dolor fuga deleniti nihil? Expedita rerum possimus eveniet aliquam, magni dolorum labore maiores cupiditate officia facere impedit provident deserunt quos ex neque tenetur inventore dignissimos dicta ullam accusantium, ipsum fugiat laudantium. Fugit cum quos obcaecati cupiditate ducimus quis sit corporis officia ea, adipisci eveniet aperiam nam error nesciunt officiis dignissimos expedita veritatis dolor, labore sequi at asperiores ex laudantium. Dignissimos repellendus eveniet nemo error repudiandae commodi, earum labore minus accusantium in placeat, quia debitis facilis laudantium nam sint a minima voluptate ipsa. Nisi dolorem obcaecati rem nobis illo officiis, ullam iure.",
+      "author": "Ali"
+    },
+    {
+      "title": "Best way of learning",
+      "paragraph": "impedit provident deserunt quos ex neque tenetur inventore dignissimos dicta ullam accusantium, ipsum fugiat laudantium. Fugit cum quos obcaecati cupiditate ducimus quis sit corporis officia ea, adipisci eveniet aperiam nam error nesciunt officiis dignissimos expedita veritatis dolor, labore sequi at asperiores ex laudantium. Dignissimos repellendus eveniet nemo error repudiandae commodi, earum labore minus accusantium in placeat, quia debitis facilis laudantium nam sint a minima voluptate ipsa. Nisi dolorem obcaecati rem nobis illo officiis, ullam iure.",
+      "author": "ramzan",
+      "id": "qMcgyd0"
+    },
+    {
+      "title": "gathering is the best",
+      "paragraph": "this is the demo text",
+      "author": "",
+      "id": "i_QJw3G"
+    },
+    {
+      "title": "egeg",
+      "paragraph": "trtrrtrtr",
+      "author": "sufayn",
+      "id": "5HVib4U"
+    }
+  ]
+}
