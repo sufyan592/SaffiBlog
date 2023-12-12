@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import BlogList from "./BlogList";
-import useFetch from "./useFetch";
+import { useEffect } from "react";
+import { fetchBlogData } from "./../../redux/actions/BlogAction";
 
 const Blog = () => {
-  const {
-    data: blogs,
-    isloading,
-    error,
-  } = useFetch("http://localhost:8000/blog");
+  const blogs = useSelector((state) => state.blogReducer);
+  console.log("Data:", blogs);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBlogData());
+  }, [dispatch]);
+  // const {
+  //   data: blogs,
+  //   isloading,
+  //   error,
+  // } = useFetch("http://localhost:8000/blog");
 
   // useEffect(() => {
   //   fetch("http://localhost:8000/blog")
@@ -35,17 +43,17 @@ const Blog = () => {
 
   return (
     <>
+      {/* {isloading && <p>Loading...</p>}
+      {error && <p>Error...</p>} */}
       <section className="myBlog">
         <div className="myBlog-wrapper section-spacing">
           <h1>Saffi Tech</h1>
 
-          {blogs &&
-            blogs.map((blogData, i) => {
+          {blogs.data &&
+            blogs.data.map((blogData, i) => {
               return (
                 <>
-                  {/* <BlogList data={blogData} deleteblog={deleteblog} key={i} /> */}
                   <BlogList data={blogData} />
-                  <p></p>
                 </>
               );
             })}

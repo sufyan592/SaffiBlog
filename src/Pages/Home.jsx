@@ -1,17 +1,12 @@
 import React from "react";
-import Hero from "../Components/Hero/Hero";
-import Nav from "../Components/Hero/Nav/Nav";
-import Blog from "../BlogComponents/Blog/Blog";
-import LocalStore from "../Components/LocalStore";
-import MultiForm from "../Components/MultiForm";
+import Nav from "../components/nav/Nav";
+import Blog from "./../components/blog/Blog";
 
 const Home = () => {
   return (
     <>
       <Nav />
       <Blog />
-      {/* <Hero /> */}
-      {/* <MultiForm /> */}
     </>
   );
 };

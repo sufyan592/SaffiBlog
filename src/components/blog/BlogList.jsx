@@ -2,8 +2,8 @@ import React from "react";
 import "./blog.css";
 import { Link } from "react-router-dom";
 
-const BlogList = ({ data, deleteblog }) => {
-  const { title, paragraph, author, shortparagraph, id } = data;
+const BlogList = ({ data }) => {
+  const { title, author, shortparagraph, id } = data;
   return (
     <>
       <section className="blog-list">

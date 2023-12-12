@@ -1,41 +1,61 @@
-import React, { useState, useEffect } from "react";
-import Nav from "../../Components/Hero/Nav/Nav";
-import "./blog.css";
+import React, { useState } from "react";
+import "../blog/blog.css";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Nav from "../nav/Nav";
 
 const Sigin = () => {
-  const initialData = JSON.parse(localStorage.getItem("userData"));
-  // const [data, setData] = useState(initialData);
+  const initialData = JSON.parse(localStorage.getItem("userData")) || [];
   const emailRegix =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [Cpassword, setCPassword] = useState("");
-  const [data, setData] = useState([initialData]);
+  const [data, setData] = useState(initialData);
   const [nameErr, setNameErr] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const [passErr, setPassErr] = useState(false);
-  const [passCErr, setCPassErr] = useState(false);
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   localStorage.setItem("userData", JSON.stringify(data));
-  // }, [data]);
+
   const userId = Math.random();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setData((prevData) => [...prevData, { name, email, password, userId }]);
+    if (data.some((user) => user.email === email)) {
+      toast("🦄Email Already Exist!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
 
-    // Use the updated state when saving to localStorage
+    setData((prevData) => [...prevData, { name, email, password, userId }]);
     localStorage.setItem(
       "userData",
       JSON.stringify([...data, { name, email, password, userId }])
     );
-
-    navigate("/login");
+    toast("🦄User Added Successfully!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
   };
 
   const handleName = (e) => {
@@ -64,16 +84,6 @@ const Sigin = () => {
     }
     setPassword(e.target.value);
   };
-
-  // Uncomment the code below if you want to handle confirmPassword
-  // const handleCPass = (e) => {
-  //   setCPassword(e.target.value);
-  //   if (password !== Cpassword) {
-  //     setCPassErr(true);
-  //   } else {
-  //     setCPassErr(false);
-  //   }
-  // };
 
   return (
     <>
@@ -116,22 +126,21 @@ const Sigin = () => {
               ""
             )}
 
-            {/* Uncomment the code below if you want to handle confirmPassword */}
-            {/* <label htmlFor="Cpassword">Confirm Password:</label>
-            <input
-              type="password"
-              name="Cpassword"
-              value={Cpassword}
-              onChange={handleCPass}
-            />
-            {passCErr ? (
-              <p style={{ color: "red" }}>Password not matched.</p>
-            ) : (
-              ""
-            )} */}
             <button type="submit">Signin</button>
           </form>
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </section>
     </>
   );

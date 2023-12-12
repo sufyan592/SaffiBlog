@@ -1,31 +1,45 @@
 import React, { useState } from "react";
 import "./blog.css";
-import Nav from "../../Components/Hero/Nav/Nav";
+import Nav from "../nav/Nav";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { createBlogData } from "../../redux/actions/BlogAction";
 
 const CreateBlog = () => {
+  const userData = JSON.parse(localStorage.getItem("foundData"));
+  // console.log("Found data:", userData);
   const [title, setTitle] = useState("");
   const [paragraph, setDescription] = useState("");
-  const [author, setAuthor] = useState("sufayn");
+  const [author, setAuthor] = useState(userData.name);
   const [ispending, setPending] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  if (!userData) {
+    navigate("/login");
+  }
+  console.log(setAuthor, setPending);
 
   const handleSubmit = (e) => {
     const data = { title, paragraph, author };
-    console.log(data);
+    dispatch(createBlogData(data));
+
     e.preventDefault();
-    setPending(true);
-    fetch("http://localhost:8000/blog", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((res) => {
-      console.log("Data added", res.json());
-      setPending(false);
+
+    toast("🦄Blog Created!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
     });
-    navigate("/");
+    setTimeout(() => {
+      navigate("/blog");
+    }, 2000);
   };
   return (
     <>
@@ -51,10 +65,11 @@ const CreateBlog = () => {
             ></textarea>
 
             <label htmlFor="author">Author:</label>
-            <select value={author} onChange={(e) => setAuthor(e.target.value)}>
+            <input type="text" value={author} name="author" />
+            {/* <select value={author} onChange={(e) => setAuthor(e.target.value)}>
               <option value="sufyan">Sufyan</option>
               <option value="ramzan">Ramzan</option>
-            </select>
+            </select> */}
             {/* {!ispending && <input type="submit" value="Add Blog" />} */}
             {ispending ? (
               <input type="submit" value="Adding Blog..." />
@@ -63,6 +78,18 @@ const CreateBlog = () => {
             )}
           </form>
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </section>
     </>
   );
